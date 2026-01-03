@@ -549,6 +549,17 @@ img {
     border-color: var(--color-accent);
 }
 
+.badge-enterprise {
+    background: transparent;
+    color: $ctp-mocha-green;
+    border-color: $ctp-mocha-green;
+}
+
+[data-theme="light"] .badge-enterprise {
+    color: $ctp-latte-green;
+    border-color: $ctp-latte-green;
+}
+
 // ============================================
 // Hero Section
 // ============================================
@@ -1159,6 +1170,67 @@ img {
     color: var(--color-text-muted);
     font-size: 0.9375rem;
     line-height: 1.6;
+}
+
+// ============================================
+// Enterprise Section
+// ============================================
+.enterprise {
+    padding: var(--space-3xl) 0;
+    background: var(--color-bg);
+}
+
+.enterprise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-lg);
+}
+
+.enterprise-card {
+    padding: var(--space-xl);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+
+    &:hover {
+        border-color: $ctp-mocha-green;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+}
+
+[data-theme="light"] .enterprise-card:hover {
+    border-color: $ctp-latte-green;
+}
+
+.enterprise-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--space-md);
+    background: var(--color-bg-elevated);
+    border-radius: var(--radius-md);
+    color: $ctp-mocha-green;
+}
+
+[data-theme="light"] .enterprise-icon {
+    color: $ctp-latte-green;
+}
+
+.enterprise-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+}
+
+.enterprise-card p {
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin: 0;
 }
 
 // ============================================
