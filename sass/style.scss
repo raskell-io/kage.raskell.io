@@ -1130,7 +1130,7 @@ img {
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: var(--space-lg);
 }
 
@@ -1142,7 +1142,7 @@ img {
     transition: all var(--transition-base);
 
     &:hover {
-        border-color: var(--color-border);
+        border-color: var(--color-primary);
         transform: translateY(-2px);
         box-shadow: var(--shadow-md);
     }
@@ -1170,6 +1170,7 @@ img {
     color: var(--color-text-muted);
     font-size: 0.9375rem;
     line-height: 1.6;
+    margin: 0;
 }
 
 // ============================================
