@@ -153,6 +153,33 @@
                             </svg>
                             Cargo
                         </button>
+                        <button
+                            class="install-option"
+                            onclick="selectInstall('docker')"
+                            data-method="docker"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="M22 12.5c0-.28-.22-.5-.5-.5h-3c-.28 0-.5.22-.5.5v3c0 .28.22.5.5.5h3c.28 0 .5-.22.5-.5v-3z"/>
+                                <path d="M2 17.5c0-.28.22-.5.5-.5h3c.28 0 .5.22.5.5v3c0 .28-.22.5-.5.5h-3c-.28 0-.5-.22-.5-.5v-3z"/>
+                                <rect x="6" y="12" width="4" height="4" rx=".5"/>
+                                <rect x="10" y="12" width="4" height="4" rx=".5"/>
+                                <rect x="6" y="8" width="4" height="4" rx=".5"/>
+                                <rect x="10" y="8" width="4" height="4" rx=".5"/>
+                                <rect x="14" y="8" width="4" height="4" rx=".5"/>
+                                <rect x="10" y="4" width="4" height="4" rx=".5"/>
+                            </svg>
+                            Docker
+                        </button>
                     </div>
                 </div>
                 <div class="install-cmd-wrapper">
@@ -462,11 +489,13 @@
     const installCommands = {
         script: "curl -fsSL https://kage.raskell.io/install.sh | sh",
         cargo: "cargo install kage",
+        docker: "docker pull ghcr.io/raskell-io/kage:latest",
     };
 
     const installIcons = {
         script: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8 4 4-4 4"/></svg>',
         cargo: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linejoin="round" stroke-width="1"><path stroke-linecap="round" d="M1.5 7L8 10.5L14.5 7m-10-2.5l3.503 2L14.498 3M4.5 5.5v7m3.5-6V14"/><path stroke-linecap="round" d="M8.003 3L11.5 4.5v8"/><path stroke-linecap="square" d="M1.5 6.984V11l6.503 3.5L14.5 11V3L11 1.5l-6.5 3v1z"/></g></svg>',
+        docker: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12.5c0-.28-.22-.5-.5-.5h-3c-.28 0-.5.22-.5.5v3c0 .28.22.5.5.5h3c.28 0 .5-.22.5-.5v-3z"/><path d="M2 17.5c0-.28.22-.5.5-.5h3c.28 0 .5.22.5.5v3c0 .28-.22.5-.5.5h-3c-.28 0-.5-.22-.5-.5v-3z"/><rect x="6" y="12" width="4" height="4" rx=".5"/><rect x="10" y="12" width="4" height="4" rx=".5"/><rect x="6" y="8" width="4" height="4" rx=".5"/><rect x="10" y="8" width="4" height="4" rx=".5"/><rect x="14" y="8" width="4" height="4" rx=".5"/><rect x="10" y="4" width="4" height="4" rx=".5"/></svg>',
     };
 
     let currentMethod = "script";
