@@ -62,6 +62,19 @@ $ctp-latte-mantle: #e6e9ef;
 $ctp-latte-crust: #dce0e8;
 
 // ============================================
+// Kage Brand Colors
+// ============================================
+// Purple - deeper, more saturated to match mascot
+$kage-purple-dark: #a78bfa;      // Violet-purple for dark theme
+$kage-purple-light: #7c3aed;     // Deeper violet for light theme
+// Orange - Claude Code inspired (burnt terracotta)
+$kage-orange-dark: #e07b53;      // Warm terracotta for dark theme
+$kage-orange-light: #c2553a;     // Deeper terracotta for light theme
+// Transitional pink
+$kage-pink-dark: #e879b9;        // Pink bridge color
+$kage-pink-light: #d946a0;       // Pink for light theme
+
+// ============================================
 // CSS Custom Properties (Theme Variables)
 // ============================================
 :root {
@@ -104,18 +117,18 @@ $ctp-latte-crust: #dce0e8;
     --color-text-subtle: #{$ctp-mocha-overlay1};
     --color-border: #{$ctp-mocha-surface1};
     --color-border-subtle: #{$ctp-mocha-surface0};
-    --color-primary: #{$ctp-mocha-mauve};
-    --color-primary-hover: #{$ctp-mocha-lavender};
-    --color-accent: #{$ctp-mocha-peach};
+    --color-primary: #{$kage-purple-dark};
+    --color-primary-hover: #{lighten($kage-purple-dark, 10%)};
+    --color-accent: #{$kage-orange-dark};
     --color-success: #{$ctp-mocha-green};
     --color-warning: #{$ctp-mocha-yellow};
     --color-error: #{$ctp-mocha-red};
     --color-info: #{$ctp-mocha-sapphire};
-    --gradient-primary: linear-gradient(135deg, #{$ctp-mocha-mauve} 0%, #{$ctp-mocha-pink} 50%, #{$ctp-mocha-peach} 100%);
+    --gradient-primary: linear-gradient(135deg, #{$kage-purple-dark} 0%, #{$kage-pink-dark} 50%, #{$kage-orange-dark} 100%);
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
-    --shadow-glow: 0 0 60px rgba(#{red($ctp-mocha-mauve)}, #{green($ctp-mocha-mauve)}, #{blue($ctp-mocha-mauve)}, 0.3);
+    --shadow-glow: 0 0 60px rgba(#{red($kage-purple-dark)}, #{green($kage-purple-dark)}, #{blue($kage-purple-dark)}, 0.3);
 }
 
 // Light theme
@@ -128,18 +141,18 @@ $ctp-latte-crust: #dce0e8;
     --color-text-subtle: #{$ctp-latte-overlay1};
     --color-border: #{$ctp-latte-surface1};
     --color-border-subtle: #{$ctp-latte-surface0};
-    --color-primary: #{$ctp-latte-mauve};
-    --color-primary-hover: #{$ctp-latte-lavender};
-    --color-accent: #{$ctp-latte-peach};
+    --color-primary: #{$kage-purple-light};
+    --color-primary-hover: #{lighten($kage-purple-light, 10%)};
+    --color-accent: #{$kage-orange-light};
     --color-success: #{$ctp-latte-green};
     --color-warning: #{$ctp-latte-yellow};
     --color-error: #{$ctp-latte-red};
     --color-info: #{$ctp-latte-sapphire};
-    --gradient-primary: linear-gradient(135deg, #{$ctp-latte-mauve} 0%, #{$ctp-latte-pink} 50%, #{$ctp-latte-peach} 100%);
+    --gradient-primary: linear-gradient(135deg, #{$kage-purple-light} 0%, #{$kage-pink-light} 50%, #{$kage-orange-light} 100%);
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
-    --shadow-glow: 0 0 60px rgba(#{red($ctp-latte-mauve)}, #{green($ctp-latte-mauve)}, #{blue($ctp-latte-mauve)}, 0.2);
+    --shadow-glow: 0 0 60px rgba(#{red($kage-purple-light)}, #{green($kage-purple-light)}, #{blue($kage-purple-light)}, 0.2);
 }
 
 // ============================================
@@ -462,7 +475,7 @@ img {
 }
 
 .btn-gradient {
-    background: linear-gradient(135deg, $ctp-mocha-peach 0%, $ctp-mocha-mauve 100%);
+    background: linear-gradient(135deg, $kage-purple-dark 0%, $kage-orange-dark 100%);
     background-size: 200% 200%;
     background-position: 0% 50%;
     color: $ctp-mocha-crust;
@@ -474,12 +487,12 @@ img {
         background-position: 100% 50%;
         color: $ctp-mocha-crust;
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba($ctp-mocha-peach, 0.3), 0 4px 12px rgba($ctp-mocha-mauve, 0.2);
+        box-shadow: 0 8px 25px rgba($kage-purple-dark, 0.3), 0 4px 12px rgba($kage-orange-dark, 0.2);
     }
 }
 
 [data-theme="light"] .btn-gradient {
-    background: linear-gradient(135deg, $ctp-latte-peach 0%, $ctp-latte-mauve 100%);
+    background: linear-gradient(135deg, $kage-purple-light 0%, $kage-orange-light 100%);
     background-size: 200% 200%;
     background-position: 0% 50%;
     color: white;
@@ -487,7 +500,7 @@ img {
     &:hover {
         background-position: 100% 50%;
         color: white;
-        box-shadow: 0 8px 25px rgba($ctp-latte-peach, 0.3), 0 4px 12px rgba($ctp-latte-mauve, 0.2);
+        box-shadow: 0 8px 25px rgba($kage-purple-light, 0.3), 0 4px 12px rgba($kage-orange-light, 0.2);
     }
 }
 
