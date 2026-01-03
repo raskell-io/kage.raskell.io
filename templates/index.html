@@ -1,0 +1,568 @@
+{% extends "base.html" %} {% block content %}
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <a
+                    href="https://github.com/raskell-io/kage/blob/main/LICENSE"
+                    target="_blank"
+                    rel="noopener"
+                    class="badge"
+                    >Open Source</a
+                >
+                <a
+                    href="https://www.anthropic.com/claude-code"
+                    target="_blank"
+                    rel="noopener"
+                    class="badge badge-accent"
+                    >Claude Code Native</a
+                >
+            </div>
+            <h1 class="hero-title">
+                Agentic work orchestrator<br />
+                <span class="gradient-text">for autonomous AI agents</span>
+            </h1>
+            <p class="hero-subtitle">
+                A local-first orchestrator that enables Claude Code agents to work
+                autonomously while you're away, share context with each other, and
+                scale across multiple repositories.
+            </p>
+            <div class="hero-actions">
+                <a href="/docs/" class="btn btn-gradient">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+                    </svg>
+                    Get Started
+                </a>
+                <a href="{{ config.extra.github }}" class="btn btn-secondary">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                    >
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                        />
+                    </svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="install-widget">
+                <div class="install-selector">
+                    <button
+                        class="install-toggle"
+                        onclick="toggleInstallDropdown()"
+                        aria-label="Select install method"
+                    >
+                        <span class="install-toggle-icon" id="install-icon">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                                <path d="m10 8 4 4-4 4"/>
+                            </svg>
+                        </span>
+                        <svg
+                            class="install-toggle-chevron"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                    <div class="install-dropdown" id="install-dropdown">
+                        <button
+                            class="install-option active"
+                            onclick="selectInstall('script')"
+                            data-method="script"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <rect width="18" height="18" x="3" y="3" rx="2"/>
+                                <path d="m10 8 4 4-4 4"/>
+                            </svg>
+                            Script
+                        </button>
+                        <button
+                            class="install-option"
+                            onclick="selectInstall('cargo')"
+                            data-method="cargo"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                            >
+                                <g
+                                    fill="none"
+                                    fill-rule="evenodd"
+                                    stroke="currentColor"
+                                    stroke-linejoin="round"
+                                    stroke-width="1"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        d="M1.5 7L8 10.5L14.5 7m-10-2.5l3.503 2L14.498 3M4.5 5.5v7m3.5-6V14"
+                                    />
+                                    <path
+                                        stroke-linecap="round"
+                                        d="M8.003 3L11.5 4.5v8"
+                                    />
+                                    <path
+                                        stroke-linecap="square"
+                                        d="M1.5 6.984V11l6.503 3.5L14.5 11V3L11 1.5l-6.5 3v1z"
+                                    />
+                                </g>
+                            </svg>
+                            Cargo
+                        </button>
+                    </div>
+                </div>
+                <div class="install-cmd-wrapper">
+                    <code class="install-cmd" id="install-cmd"
+                        >curl -fsSL https://kage.raskell.io/install.sh | sh</code
+                    >
+                    <button
+                        class="copy-btn"
+                        id="copy-btn"
+                        onclick="copyCurrentCommand()"
+                        aria-label="Copy install command"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <rect
+                                width="14"
+                                height="14"
+                                x="8"
+                                y="8"
+                                rx="2"
+                                ry="2"
+                            />
+                            <path
+                                d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"
+                            />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                    <path d="M2 12h20"/>
+                    <path d="M12 2v20"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features" id="features">
+    <div class="container">
+        <div class="section-header">
+            <h2>Built for Autonomous AI Agents</h2>
+            <p>
+                Shadow agents working invisibly, executing with precision
+            </p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <h3>Supervisor Pattern</h3>
+                <p>
+                    Kage acts as a supervisor for AI agents, not just a session manager.
+                    Spawn agents with goals, monitor health and progress, enforce
+                    iteration limits, and enable checkpoint/resume workflows.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M12 20h9"/>
+                        <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+                        <path d="m15 5 3 3"/>
+                    </svg>
+                </div>
+                <h3>Event Sourcing</h3>
+                <p>
+                    All agent context is stored as immutable events. Full audit trails,
+                    cross-agent context sharing, replay for debugging, and time-travel
+                    queries.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M3 3v18h18"/>
+                        <rect x="7" y="10" width="4" height="8" rx="1"/>
+                        <rect x="15" y="5" width="4" height="13" rx="1"/>
+                    </svg>
+                </div>
+                <h3>Namespace Organization</h3>
+                <p>
+                    Repositories are grouped into namespaces. Agents within a namespace
+                    can share context and coordinate work seamlessly across your
+                    codebase.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                        <line x1="12" y1="22.08" x2="12" y2="12"/>
+                    </svg>
+                </div>
+                <h3>Single Binary</h3>
+                <p>
+                    Distributed as a single static binary with zero runtime dependencies.
+                    No database server, no external services. Just download and run on
+                    Linux, macOS, or Windows.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M12 1v6"/>
+                        <path d="M12 17v6"/>
+                        <path d="m4.22 4.22 4.24 4.24"/>
+                        <path d="m15.54 15.54 4.24 4.24"/>
+                        <path d="M1 12h6"/>
+                        <path d="M17 12h6"/>
+                        <path d="m4.22 19.78 4.24-4.24"/>
+                        <path d="m15.54 8.46 4.24-4.24"/>
+                    </svg>
+                </div>
+                <h3>Context Sharing</h3>
+                <p>
+                    Two-tier memory system with working and long-term storage. Agents
+                    automatically share discoveries, learned patterns, and decisions
+                    with each other.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <path d="m9 15 2 2 4-4"/>
+                    </svg>
+                </div>
+                <h3>Checkpoints & Resume</h3>
+                <p>
+                    Save agent state on iteration limits. Review progress, provide
+                    guidance, and resume where you left off. Never lose work when
+                    stepping away.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="why-sentinel" id="why">
+    <div class="container">
+        <div class="why-header">
+            <h2>Why Kage?</h2>
+            <p class="why-lead">
+                AI agents are powerful, but managing them at scale is challenging.
+            </p>
+        </div>
+
+        <div class="why-prose">
+            <p>
+                Running a single Claude Code session is straightforward. But what happens
+                when you need agents working across multiple repositories? When you want
+                to step away and let them work autonomously? When they need to share what
+                they've learned?
+            </p>
+
+            <p>
+                Kage solves these problems with a supervisor architecture. It spawns
+                agents with specific goals, monitors their progress, and enforces
+                guardrails. When an agent hits its iteration limit, Kage saves a
+                checkpoint so you can review, guide, and resume.
+            </p>
+
+            <p>
+                The name "Kage" (影) means "shadow" in Japanese. Like shadows working
+                behind the scenes, Kage enables AI agents to execute with precision
+                while you focus on what matters.
+            </p>
+
+            <div class="why-pillars">
+                <div class="pillar">
+                    <h3>Local-First</h3>
+                    <p>
+                        Your data stays on your machine. Single binary with embedded
+                        storage. No cloud dependencies, no external services. Works
+                        offline.
+                    </p>
+                </div>
+                <div class="pillar">
+                    <h3>Claude Code Native</h3>
+                    <p>
+                        First-class support for Claude Code as the primary agent.
+                        Trait-based architecture allows extending to other providers
+                        when needed.
+                    </p>
+                </div>
+                <div class="pillar">
+                    <h3>Built in Rust</h3>
+                    <p>
+                        Memory-safe, fast, and reliable. Async runtime with Tokio.
+                        Tiny resource footprint for long-running daemon processes.
+                    </p>
+                </div>
+            </div>
+
+            <p class="why-conclusion">
+                Kage is built for developers who want to scale their AI-assisted
+                workflows without sacrificing control or transparency.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to orchestrate your AI agents?</h2>
+            <p>
+                Get started with Kage in minutes. Read the docs or explore the
+                source code.
+            </p>
+            <div class="cta-actions">
+                <a href="/docs/" class="btn btn-primary">Get Started</a>
+                <a
+                    href="{{ config.extra.docs_external_url }}"
+                    class="btn btn-ghost"
+                    >Documentation</a
+                >
+                <a href="{{ config.extra.github }}" class="btn btn-ghost">GitHub</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const installCommands = {
+        script: "curl -fsSL https://kage.raskell.io/install.sh | sh",
+        cargo: "cargo install kage",
+    };
+
+    const installIcons = {
+        script: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="m10 8 4 4-4 4"/></svg>',
+        cargo: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linejoin="round" stroke-width="1"><path stroke-linecap="round" d="M1.5 7L8 10.5L14.5 7m-10-2.5l3.503 2L14.498 3M4.5 5.5v7m3.5-6V14"/><path stroke-linecap="round" d="M8.003 3L11.5 4.5v8"/><path stroke-linecap="square" d="M1.5 6.984V11l6.503 3.5L14.5 11V3L11 1.5l-6.5 3v1z"/></g></svg>',
+    };
+
+    let currentMethod = "script";
+    let copyTimeout = null;
+    const copyIconHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
+    const checkIconHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+
+    function toggleInstallDropdown() {
+        const dropdown = document.getElementById("install-dropdown");
+        dropdown.classList.toggle("open");
+    }
+
+    function resetCopyButton() {
+        const btn = document.getElementById("copy-btn");
+        if (copyTimeout) {
+            clearTimeout(copyTimeout);
+            copyTimeout = null;
+        }
+        btn.innerHTML = copyIconHTML;
+    }
+
+    function selectInstall(method) {
+        currentMethod = method;
+        resetCopyButton();
+        document.getElementById("install-cmd").textContent =
+            installCommands[method];
+        document.getElementById("install-icon").innerHTML =
+            installIcons[method];
+        document.querySelectorAll(".install-option").forEach((opt) => {
+            opt.classList.toggle("active", opt.dataset.method === method);
+        });
+        document.getElementById("install-dropdown").classList.remove("open");
+    }
+
+    const confettiStyle = document.createElement('style');
+    confettiStyle.textContent = `
+        @keyframes confetti-burst {
+            0% { transform: translate(-50%, -50%) translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(confettiStyle);
+
+    function createConfetti(originX, originY) {
+        const colors = ['#cba6f7', '#fab387', '#b4befe', '#f5c2e7', '#94e2d5'];
+
+        for (let i = 0; i < 10; i++) {
+            const particle = document.createElement('div');
+            const angle = (Math.PI * 2 * i) / 10;
+            const dist = 35 + Math.random() * 25;
+
+            particle.style.cssText = `
+                position: fixed;
+                left: ${originX}px;
+                top: ${originY}px;
+                width: 5px;
+                height: 5px;
+                background: ${colors[i % colors.length]};
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                --tx: ${Math.cos(angle) * dist}px;
+                --ty: ${Math.sin(angle) * dist + 15}px;
+                animation: confetti-burst 0.45s ease-out forwards;
+            `;
+
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 450);
+        }
+    }
+
+    function copyCurrentCommand() {
+        const btn = document.getElementById("copy-btn");
+        const rect = btn.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+
+        navigator.clipboard.writeText(installCommands[currentMethod]);
+        btn.innerHTML = checkIconHTML;
+        createConfetti(x, y);
+
+        if (copyTimeout) clearTimeout(copyTimeout);
+        copyTimeout = setTimeout(() => {
+            btn.innerHTML = copyIconHTML;
+            copyTimeout = null;
+        }, 2000);
+    }
+
+    document.addEventListener("click", (e) => {
+        const dropdown = document.getElementById("install-dropdown");
+        const toggle = document.querySelector(".install-toggle");
+        if (!dropdown.contains(e.target) && !toggle.contains(e.target)) {
+            dropdown.classList.remove("open");
+        }
+    });
+</script>
+{% endblock %}
