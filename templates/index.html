@@ -193,14 +193,12 @@
             </div>
         </div>
         <div class="hero-visual">
-            <div class="hero-placeholder">
-                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
-                    <path d="M2 12h20"/>
-                    <path d="M12 2v20"/>
-                </svg>
-            </div>
+            <div class="mascot-glow"></div>
+            <img
+                src="{{ get_url(path='img/kage-mascot.avif') | safe }}"
+                alt="Kage Mascot"
+                class="hero-mascot"
+            />
         </div>
     </div>
 </section>

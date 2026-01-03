@@ -186,7 +186,7 @@
             <div class="container">
                 <nav class="nav" role="navigation" aria-label="Main navigation">
                     <a href="{{ get_url(path='/') }}" class="logo" aria-label="Kage Home">
-                        <span class="logo-icon" aria-hidden="true">影</span>
+                        <img src="{{ get_url(path='img/kage-mascot.avif') | safe }}" alt="Kage" class="logo-img">
                         <span class="logo-text">Kage</span>
                     </a>
                     <div class="nav-links">
@@ -233,9 +233,9 @@
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-brand">
-                        <div class="footer-logo" aria-hidden="true">
-                            <span class="footer-logo-icon">影</span>
-                            <span class="footer-logo-text">Kage</span>
+                        <div class="footer-mascot-wrapper" aria-hidden="true">
+                            <div class="footer-mascot-glow"></div>
+                            <img src="{{ get_url(path='img/kage-mascot.avif') | safe }}" alt="" class="footer-mascot">
                         </div>
                         <div class="footer-tagline">
                             <p class="footer-title">Agentic work orchestrator<br>for autonomous AI agents</p>
